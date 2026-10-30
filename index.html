@@ -9,7 +9,7 @@
     body { font-family: "Helvetica Neue", Arial, sans-serif; line-height: 1.7; color: #333333; background-color: #f4f7f9; }
     
     .hero {
-      background-image: linear-gradient(rgba(0, 119, 182, 0.5), rgba(0, 180, 216, 0.5)), url('fuji.jpg');
+      background-image: linear-gradient(rgba(0, 119, 182, 0.5), rgba(0, 180, 216, 0.5)), url('images/fuji.jpg');
       background-size: cover; background-position: center;
       color: #ffffff; text-align: center; padding: 100px 20px;
     }
@@ -21,27 +21,39 @@
     .section-title { text-align: center; font-size: 1.8rem; color: #0077b6; margin-bottom: 30px; position: relative; }
     .section-title::after { content: ""; display: block; width: 50px; height: 3px; background: #00b4d8; margin: 10px auto 0; border-radius: 2px; }
 
-    .spots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 50px; }
+.spots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 850px;
+  margin: 0 auto 50px;
+}
     
     /* कार्डलाई लिङ्क जस्तो बनाउने */
     .spot-card {
       background: #ffffff; border-radius: 12px; overflow: hidden;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06); display: flex; flex-direction: column;
+    min-height: 400px;
       transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer; text-decoration: none; color: inherit;
     }
     .spot-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); }
     
     .spot-tag { background: #0077b6; color: #ffffff; font-size: 0.8rem; font-weight: bold; padding: 4px 12px; align-self: flex-start; margin: 16px 0 0 16px; border-radius: 20px; }
-    .spot-body { padding: 16px 20px 24px; flex-grow: 1; }
-    .spot-title { font-size: 1.2rem; margin-bottom: 10px; color: #1a1a1a; }
-    .spot-text { font-size: 0.95rem; color: #555555; }
+    .spot-body {
+  padding: 16px 20px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+    .spot-title { font-size: 1.2rem; text-align: center; margin-bottom: 10px; color: #1a1a1a; }
+    .spot-text { font-size: 0.92rem; color: #555555; }
     .spot-link {
   display: block;
-  text-align:right;
+  text-align: right;
   color: #0077b6;
   font-weight: bold;
   margin-top: auto;
-  padding: 12px;
+  padding-top: 12px;
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
@@ -90,9 +102,9 @@
           <span class="spot-tag">グルメ & ショッピング</span>
           <div class="spot-body">
             <img src="images/food/image1.jpg" alt="はとばキッチン" style="width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
-            <h3 class="spot-title">エスパルスドリームプラザ「はとばキッチン」</h3>
+            <h3 class="spot-title">エスパルスドリームプラザ<br>「はとばキッチン」</h3>
            <p class="spot-text">
-  清水港のヨットハーバーを目の前に望む複合商業施設。大人気のビュッフェランチを堪能します。
+  清水港のヨットハーバーを目の前に望む複合商業施設。<br>大人気のビュッフェランチを堪能します。
 </p>
 <span class="spot-link">Clickして詳細へ ➔</span>
           </div>
@@ -104,7 +116,7 @@
           <div class="spot-body">
             <img src="images/cruise/image2.jpg" alt="駿河湾クルーズ" style="width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
             <h3 class="spot-title">駿河湾クルーズ（清水港）</h3>
-            <p class="spot-text">潮風を感じながら約40分間の船旅へ。富士山のパノラマビューを満喫。</p>
+            <p class="spot-text">潮風を感じながら約40分間の船旅へ。<br>富士山のパノラマビューを満喫。</p>
           <span class="spot-link">Clickして詳細へ ➔</span>
           </div>
         </a>
@@ -114,10 +126,9 @@
           <span class="spot-tag">世界文化遺産</span>
           <div class="spot-body">
             <img src="images/image3.jpg" alt="三保の松原" style="width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
-            <h3 class="spot-title">三保の松原（みほのまつばら）</h3>
-            <p class="spot-text">青い海と緑の松林、富士山の絶景名所。「羽衣伝説」の舞台を散策。
-              <span class="spot-link">Clickして詳細へ ➔</span>
-            </p>
+            <h3 class="spot-title">三保の松原<br>（みほのまつばら）</h3>
+ <p class="spot-text">青い海と緑の松林、富士山の絶景名所。<br>「羽衣伝説」の舞台を散策。</p>
+<span class="spot-link">Clickして詳細へ ➔</span>
           </div>
         </a>
 
@@ -126,8 +137,9 @@
           <span class="spot-tag">国宝・パワースポット</span>
           <div class="spot-body">
             <img src="images/image4.jpg" alt="久能山東照宮" style="width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
-            <h3 class="spot-title">久能山東照宮（くのうざんとうしょうぐう）</h3>
-            <p class="spot-text">徳川家康公が眠る国宝の社殿。歴史とパワーあふれる名所を見学。<span class="spot-link">Clickして詳細へ ➔</span></p>
+            <h3 class="spot-title">久能山東照宮<br>（くのうざんとうしょうぐう）</h3>
+            <p class="spot-text">徳川家康公が眠る国宝の社殿。<br>歴史とパワーあふれる名所を見学。</p>
+<span class="spot-link">Clickして詳細へ ➔</span>
           </div>
         </a>
 
