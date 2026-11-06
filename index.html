@@ -69,6 +69,21 @@
     .info-list li { margin-bottom: 6px; }
 
     footer { text-align: center; padding: 25px 20px; background: #1e293b; color: #94a3b8; font-size: 0.85rem; }
+
+
+    /* 参加者の感想 */
+    .reviews-section { margin: 60px auto 50px; max-width: 900px; }
+    .review-year-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 0 0 25px; }
+    .review-year-button { border: 1px solid #0077b6; background: #ffffff; color: #0077b6; padding: 9px 24px; border-radius: 22px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background 0.2s, color 0.2s; }
+    .review-year-button.active, .review-year-button:hover { background: #0077b6; color: #ffffff; }
+    .review-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .review-card { background: #ffffff; border-radius: 12px; padding: 22px 20px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06); }
+    .review-student { color: #0077b6; font-weight: bold; margin-bottom: 10px; }
+    .review-avatar { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; margin-right: 9px; border-radius: 50%; background: #0077b6; color: #ffffff; font-size: 0.9rem; font-weight: bold; vertical-align: middle; }
+    .review-comment { color: #555555; font-size: 0.95rem; }
+    .review-note { text-align: center; color: #888888; font-size: 0.8rem; margin-top: 18px; }
+    @media (max-width: 700px) { .review-grid { grid-template-columns: 1fr; } }
+
   </style>
 </head>
 <body>
@@ -146,12 +161,71 @@
       </div>
     </section>
 
+
+
+    <section class="reviews-section" id="reviews">
+      <h2 class="section-title">参加者の感想</h2>
+      <div class="review-year-buttons" role="group" aria-label="感想の年度を選択">
+        <button type="button" class="review-year-button active" data-year="2024" aria-pressed="true">2024年</button>
+        <button type="button" class="review-year-button" data-year="2025" aria-pressed="false">2025年</button>
+        <button type="button" class="review-year-button" data-year="2026" aria-pressed="false">2026年</button>
+      </div>
+      <div class="review-grid" id="review-list" aria-live="polite">
+        <article class="review-card"><p class="review-student"><span class="review-avatar">A</span><span>学生 Aさん</span></p><p class="review-comment">クルーズから見る富士山がとてもきれいで、忘れられない思い出になりました。</p></article>
+        <article class="review-card"><p class="review-student"><span class="review-avatar">B</span><span>学生 Bさん</span></p><p class="review-comment">友達と一緒においしいランチを食べたり、写真を撮ったりできて楽しかったです。</p></article>
+        <article class="review-card"><p class="review-student"><span class="review-avatar">C</span><span>学生 Cさん</span></p><p class="review-comment">三保の松原と久能山東照宮を見学して、日本の歴史や文化を学ぶことができました。</p></article>
+      </div>
+      <p class="review-note">※現在はサンプルの感想です。実際の参加者のコメントに差し替えてご利用ください。</p>
+    </section>
+
   </div>
 
   <footer>
     <p>※バス走行中は安全のため必ずシートベルトの着用をお願いいたします。</p>
     <p style="margin-top: 4px;">企画手配：株式会社 第一観光</p>
   </footer>
+
+
+  <script>
+    const reviewData = {
+      "2024": [
+        { name: "学生 Aさん", comment: "クルーズから見る富士山がとてもきれいで、忘れられない思い出になりました。" },
+        { name: "学生 Bさん", comment: "友達と一緒においしいランチを食べたり、写真を撮ったりできて楽しかったです。" },
+        { name: "学生 Cさん", comment: "三保の松原と久能山東照宮を見学して、日本の歴史や文化を学ぶことができました。" }
+      ],
+      "2025": [
+        { name: "学生 Aさん", comment: "船の上から見る景色が最高でした。海風も気持ちよく、また参加したいです。" },
+        { name: "学生 Bさん", comment: "普段なかなか行けない場所を友達と一緒に回れて、とても充実した一日でした。" },
+        { name: "学生 Cさん", comment: "久能山東照宮の建物が美しく、日本の歴史に興味を持つきっかけになりました。" }
+      ],
+      "2026": [
+        { name: "学生 Aさん", comment: "駿河湾クルーズで富士山を見ることができて感動しました。写真もたくさん撮れました。" },
+        { name: "学生 Bさん", comment: "はとばキッチンのランチがおいしく、友達との会話も弾んで楽しかったです。" },
+        { name: "学生 Cさん", comment: "美しい景色と歴史ある場所の両方を楽しめて、思い出に残る研修旅行になりました。" }
+      ]
+    };
+    const reviewButtons = document.querySelectorAll('.review-year-button');
+    const reviewList = document.getElementById('review-list');
+    reviewButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const year = button.dataset.year;
+        reviewButtons.forEach((item) => {
+          const selected = item === button;
+          item.classList.toggle('active', selected);
+          item.setAttribute('aria-pressed', selected ? 'true' : 'false');
+        });
+        reviewList.innerHTML = reviewData[year].map((review) => `
+          <article class="review-card">
+            <p class="review-student">
+              <span class="review-avatar">${review.name.match(/[A-Z]/)?.[0] || "学"}</span>
+              <span>${review.name}</span>
+            </p>
+            <p class="review-comment">${review.comment}</p>
+          </article>
+        `).join('');
+      });
+    });
+  </script>
 
 </body>
 </html>
