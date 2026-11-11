@@ -31,7 +31,7 @@
     
     /* कार्डलाई लिङ्क जस्तो बनाउने */
     .spot-card {
-      background: #EAF4F8; border-radius: 12px; overflow: hidden;
+      background: #e6f3f8; border-radius: 12px; overflow: hidden;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06); display: flex; flex-direction: column;
     min-height: 400px;
       transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer; text-decoration: none; color: inherit;
@@ -103,14 +103,14 @@
       flex-direction: column;
       gap: 10px;
       padding: 14px;
-      background: #EAF4F8;
+      background: #d4e7ee;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 15px rgba(12, 12, 12, 0.06);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .review-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 8px 20px rgba(10, 10, 10, 0.12);
     }
     .review-student {
       display: flex;
@@ -119,13 +119,18 @@
       color: #0077b6;
       font-weight: bold;
     }
+    .review-student span {
+  color: #0642b3;
+  font-size: 1rem;
+  font-weight: bold;
+}
     .review-avatar {
       display: inline-flex;
-      flex: 0 0 40px;
+      flex: 0 0 44px;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: #0077b6;
       color: #ffffff;
@@ -143,7 +148,7 @@
       background: #f4f7f9;
     }
     .review-photo { object-fit: cover; }
-    .review-comment { color: #555555; font-size: 0.92rem; }
+    .review-comment { color: hsl(0, 2%, 12%); font-size: 0.95rem; }
     .review-note { text-align: center; color: #888888; font-size: 0.8rem; margin-top: 18px; }
     @media (max-width: 700px) {
       .review-grid { grid-template-columns: 1fr; }
